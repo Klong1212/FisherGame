@@ -5,11 +5,16 @@
         orientation: "vertical"
         BoxLayout:
             orientation: "horizontal"
-            Image:
-                source: root.image
             Button:
-                text: "click"
-                size_hint:0.25,1
+                text: "Back"
+            FloatLayout:
+                size_hint: 0.2,1
+                Label:
+                    text: "Fish Game"
+                    font_size: 32
+
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
         BoxLayout:
             orientation: "horizontal"
             size_hint: 1, 0.5
@@ -17,5 +22,4 @@
                 text: "1"
             Button:
                 text: "2"
-            Button:
-                text: "3"
+                size_hint:0.5,1

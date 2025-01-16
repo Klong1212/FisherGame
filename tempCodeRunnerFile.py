@@ -1,1 +1,1 @@
-image
+    image = "puppy.jpg"
