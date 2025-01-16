@@ -1,2 +1,21 @@
 #:kivy 1.1
+
 <FishGame>:
+    BoxLayout:
+        orientation: "vertical"
+        BoxLayout:
+            orientation: "horizontal"
+            Image:
+                source: root.image
+            Button:
+                text: "click"
+                size_hint:0.25,1
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.5
+            Button:
+                text: "1"
+            Button:
+                text: "2"
+            Button:
+                text: "3"
