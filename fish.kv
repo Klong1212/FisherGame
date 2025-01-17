@@ -9,18 +9,25 @@
             Widget:
                 size_hint: 0.2, 1
                 id: rect_widget
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 1, 1 
+                    Rectangle:
+                        size: rect_widget.size
+                        pos: rect_widget.pos
                 canvas:
                     Color:
                         rgba: 1, 0, 0, 1 
                     Rectangle:
-                        size: 50, 50
-                        pos: self.width / 2 - 25, root.hi
+                        size: rect_widget.width, 10
+                        pos: rect_widget.x , rect_widget.y+root.hi
         BoxLayout:
             size_hint: 1,0.5
             orientation: 'horizontal'
             Button:
                 text: 'Fight'
-                on_press: root.on_button_click()
+                on_press: root.on_button_down()
+                on_release: root.on_button_up()
             Button:
                 text: 'Bag'
                 size_hint: 0.2, 1
