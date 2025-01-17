@@ -5,14 +5,18 @@
         orientation: "vertical"
         BoxLayout:
             orientation: "horizontal"
-            Button:
-                text: "Back"
             FloatLayout:
-                size_hint: 0.2,1
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 1, 1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            FloatLayout:
+                size_hint: 0.2, 1
                 Label:
-                    text: "Fish Game"
+                    text: root.score
                     font_size: 32
-
                     pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
         BoxLayout:
@@ -20,6 +24,7 @@
             size_hint: 1, 0.5
             Button:
                 text: "1"
+                on_press: root.on_button_click(self) 
             Button:
                 text: "2"
-                size_hint:0.5,1
+                size_hint: 0.5, 1

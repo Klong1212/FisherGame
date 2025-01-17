@@ -1,1 +1,1 @@
-    image = "puppy.jpg"
+on_button_click
