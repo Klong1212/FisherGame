@@ -1,30 +1,26 @@
 #:kivy 1.1
-
 <FishGame>:
     BoxLayout:
-        orientation: "vertical"
+        orientation: 'vertical'
         BoxLayout:
-            orientation: "horizontal"
-            FloatLayout:
-                canvas.before:
-                    Color:
-                        rgba: 0, 0, 1, 1
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
-            FloatLayout:
+            orientation: 'horizontal'
+            Button:
+                text: 'Run'
+            Widget:
                 size_hint: 0.2, 1
-                Label:
-                    text: root.score
-                    font_size: 32
-                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
-
+                id: rect_widget
+                canvas:
+                    Color:
+                        rgba: 1, 0, 0, 1 
+                    Rectangle:
+                        size: 50, 50
+                        pos: self.width / 2 - 25, root.hi
         BoxLayout:
-            orientation: "horizontal"
-            size_hint: 1, 0.5
+            size_hint: 1,0.5
+            orientation: 'horizontal'
             Button:
-                text: "1"
-                on_press: root.on_button_click(self) 
+                text: 'Fight'
+                on_press: root.on_button_click()
             Button:
-                text: "2"
-                size_hint: 0.5, 1
+                text: 'Bag'
+                size_hint: 0.2, 1
