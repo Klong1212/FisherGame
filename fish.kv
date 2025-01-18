@@ -11,10 +11,10 @@
                 id: rect_widget
                 canvas.before:
                     Color:
-                        rgba: 0, 0, 1, 1 
+                        rgba: 0, 1, 0, 1 
                     Rectangle:
-                        size: rect_widget.size
-                        pos: rect_widget.pos
+                        size: rect_widget.width, 30
+                        pos: rect_widget.x , rect_widget.y+root.hi_game
                 canvas:
                     Color:
                         rgba: 1, 0, 0, 1 
