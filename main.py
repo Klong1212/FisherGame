@@ -8,6 +8,7 @@ class FishGame(FloatLayout):
     hi_game = NumericProperty(0)
     start = BooleanProperty(True)
     score = NumericProperty(0)
+    fish_come = BooleanProperty(False)
     def __init__(self, **kwargs):
         super(FishGame, self).__init__(**kwargs)
         Clock.schedule_interval(self.minigame,1/60)
@@ -41,9 +42,9 @@ class FishGame(FloatLayout):
             if self.minigame_up==False:
                 self.hi_game -= self.speed
             if self.hi>self.hi_game and self.hi< self.hi_game+50:
-                self.score +=10
-            if ~(self.hi>self.hi_game and self.hi< self.hi_game+50):
-                self.score -=2
+                self.score +=5
+            if ~(self.hi>self.hi_game and self.hi< self.hi_game+50) and self.score > 0:
+                self.score -=1
             if self.score == 500:
                 self.start = False
                 self.score = 0
