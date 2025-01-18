@@ -4,23 +4,37 @@
         orientation: 'vertical'
         BoxLayout:
             orientation: 'horizontal'
-            Image:
-                source: 'puppies-desktop.avif'
             Widget:
-                size_hint: 0.2, 1
-                id: rect_widget
+                size_hint: 0.1, 1
+                id: rect_widget_points
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1 
+                    Rectangle:
+                        size: rect_widget_points.size
+                        pos: rect_widget_points.pos
+                canvas:
+                    Color:
+                        rgba: 1, 1, 1, 1 
+                    Rectangle:
+                        size: rect_widget_points.width, root.score
+                        pos: rect_widget_points.pos
+
+            Widget:
+                size_hint: 0.1, 1
+                id: rect_widget_minigame
                 canvas.before:
                     Color:
                         rgba: 0, 1, 0, 1 
                     Rectangle:
-                        size: rect_widget.width, 30
-                        pos: rect_widget.x , rect_widget.y+root.hi_game
+                        size: rect_widget_minigame.width, 50
+                        pos: rect_widget_minigame.x , rect_widget_minigame.y+root.hi_game
                 canvas:
                     Color:
                         rgba: 1, 0, 0, 1 
                     Rectangle:
-                        size: rect_widget.width, 10
-                        pos: rect_widget.x , rect_widget.y+root.hi
+                        size: rect_widget_minigame.width, 10
+                        pos: rect_widget_minigame.x , rect_widget_minigame.y+root.hi
         BoxLayout:
             size_hint: 1,0.5
             orientation: 'horizontal'
