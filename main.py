@@ -3,17 +3,14 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import NumericProperty,BooleanProperty,StringProperty
 from kivy.clock import Clock
 from random import randint,choice
-
-class in_bag(FloatLayout):
+from kivy.uix.screenmanager import Screen,ScreenManager
+from kivy.uix.widget import Widget
+class BagScreen(Screen):
     def __init__(self, **kwargs):
-        super(in_bag, self).__init__(**kwargs)
+        super(BagScreen, self).__init__(**kwargs)
         self.back = False
-    def display(self):
-        if self.back:
-            return FishGame()
-    def on_click_back(self):
-        self.back = True
-class FishGame(FloatLayout):
+
+class MainScreen(Screen):
     hi = NumericProperty(0)
     hi_game = NumericProperty(0)
     start = BooleanProperty(False)
@@ -21,7 +18,7 @@ class FishGame(FloatLayout):
     fish_come = BooleanProperty(False)
     link = StringProperty('fishpic/animation11.gif')
     def __init__(self, **kwargs):
-        super(FishGame, self).__init__(**kwargs)
+        super(MainScreen, self).__init__(**kwargs)
         Clock.schedule_interval(self.minigame, 1.0/60.0)
         self.ispress = False
         self.minigame_up = False
@@ -31,7 +28,7 @@ class FishGame(FloatLayout):
     def minigame(self, dt):
         if self.start:
             self.rand=randint(1,10)
-            self.rand_fight=randint(1,50)
+            self.rand_fight=randint(1,100)
             self.fish = choice(self.rand_fish)
             if self.hi > 0:
                 self.hi -= 5
@@ -76,12 +73,13 @@ class FishGame(FloatLayout):
     def on_click(self):
         self.start = True
         self.video=True
-    def build(self):
-        print("11")
-        return in_bag()
+
 class FishApp(App):
-    def build(self):  
-        return FishGame()
+    def build(self):
+        sm = ScreenManager()
+        sm.add_widget(MainScreen(name='main_screen'))
+        sm.add_widget(BagScreen(name='bag_screen'))
+        return sm
 
 if __name__ == '__main__':
     FishApp().run()
