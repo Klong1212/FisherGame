@@ -9,18 +9,17 @@ class FishGame(FloatLayout):
     start = BooleanProperty(False)
     score = NumericProperty(0)
     fish_come = BooleanProperty(False)
-    link = StringProperty()
+    link = StringProperty('fishpic/animation11.gif')
     def __init__(self, **kwargs):
         super(FishGame, self).__init__(**kwargs)
-        Clock.schedule_interval(self.minigame,1/60)
+        Clock.schedule_interval(self.minigame, 1.0/60.0)
         self.ispress = False
         self.minigame_up = False
         self.rand_fish = [1,2,3,4,5,6,7]
-        self.link = "animation11.gif"
-        if self.start == True:
-            self.link = ""
+        self.video = False
+        
     def minigame(self, dt):
-        if self.start == True:
+        if self.start:
             self.rand=randint(1,10)
             self.fish = choice(self.rand_fish)
             if self.hi > 0:
@@ -52,13 +51,18 @@ class FishGame(FloatLayout):
                 self.score = 0
                 self.hi = 0
                 self.hi_game = 0
-        print(self.hi)
+                self.link = 'fishpic/animation11.gif'
+            if self.video:
+                self.link = 'fishpic/animation12-export.gif'
+                
+                self.video = False
     def on_button_down(self):
         self.ispress = True
     def on_button_up(self):
         self.ispress =False
     def on_click(self):
         self.start = True
+        self.video=True
 class FishApp(App):
     def build(self):  
         return FishGame()
