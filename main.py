@@ -3,7 +3,6 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import NumericProperty,BooleanProperty,StringProperty
 from kivy.clock import Clock
 from random import randint,choice
-from time import sleep
 class FishGame(FloatLayout):
     hi = NumericProperty(0)
     hi_game = NumericProperty(0)
@@ -17,8 +16,9 @@ class FishGame(FloatLayout):
         self.ispress = False
         self.minigame_up = False
         self.rand_fish = [1,2,3,4,5,6,7]
-    def display(self):
-        pass
+        self.link = "animation11.gif"
+        if self.start == True:
+            self.link = ""
     def minigame(self, dt):
         if self.start == True:
             self.rand=randint(1,10)
