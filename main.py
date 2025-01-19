@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
-from kivy.properties import NumericProperty,BooleanProperty
+from kivy.properties import NumericProperty,BooleanProperty,StringProperty
 from kivy.clock import Clock
 from random import randint,choice
 class FishGame(FloatLayout):
@@ -9,13 +9,15 @@ class FishGame(FloatLayout):
     start = BooleanProperty(True)
     score = NumericProperty(0)
     fish_come = BooleanProperty(False)
+    link = StringProperty()
     def __init__(self, **kwargs):
         super(FishGame, self).__init__(**kwargs)
         Clock.schedule_interval(self.minigame,1/60)
         self.ispress = False
         self.minigame_up = False
         self.rand_fish = [1,2,3,4,5,6,7]
-
+    def display(self):
+        
     def minigame(self, dt):
         
         if self.start == True:
