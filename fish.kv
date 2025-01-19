@@ -1,4 +1,10 @@
 #:kivy 1.1
+<in_bag>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'back'
+            on_press: root.on_click_back()
 <FishGame>:
     BoxLayout:
         orientation: 'vertical'
@@ -51,3 +57,4 @@
             Button:
                 text: 'Bag'
                 size_hint: 0.2, 1
+                on_press: root.build()
