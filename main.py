@@ -31,19 +31,21 @@ class FishGame(FloatLayout):
     def minigame(self, dt):
         if self.start:
             self.rand=randint(1,10)
+            self.rand_fight=randint(1,50)
             self.fish = choice(self.rand_fish)
             if self.hi > 0:
                 self.hi -= 5
             if self.ispress and self.hi < 480:
                 self.hi += 10
-                
+            if self.rand_fight==1:
+                self.speed=randint(1,self.fish)
             if self.hi_game<=0:
                 self.minigame_up = True
                 self.speed=randint(1,self.fish)
             if self.hi_game>=480:
                 self.minigame_up = False
                 self.speed=randint(1,self.fish)
-                
+            
             if self.hi>self.hi_game and self.hi< self.hi_game+50 and self.rand==1:
                 self.minigame_up=~self.minigame_up
                 self.speed=randint(1,self.fish)
