@@ -5,6 +5,16 @@
         BoxLayout:
             orientation: 'horizontal'
             Widget:
+                size_hint: 1, 1
+                id: display
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1 
+                    Rectangle:
+                        size: display.size
+                        pos: display.pos
+
+            Widget:
                 size_hint: 0.1, 1
                 id: rect_widget_points
                 canvas.before:
