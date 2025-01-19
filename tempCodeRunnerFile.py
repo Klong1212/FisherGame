@@ -1,1 +1,1 @@
-rand_speed
+sleep(2)

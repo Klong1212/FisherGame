@@ -3,10 +3,11 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import NumericProperty,BooleanProperty,StringProperty
 from kivy.clock import Clock
 from random import randint,choice
+from time import sleep
 class FishGame(FloatLayout):
     hi = NumericProperty(0)
     hi_game = NumericProperty(0)
-    start = BooleanProperty(True)
+    start = BooleanProperty(False)
     score = NumericProperty(0)
     fish_come = BooleanProperty(False)
     link = StringProperty()
@@ -17,9 +18,8 @@ class FishGame(FloatLayout):
         self.minigame_up = False
         self.rand_fish = [1,2,3,4,5,6,7]
     def display(self):
-        
+        pass
     def minigame(self, dt):
-        
         if self.start == True:
             self.rand=randint(1,10)
             self.fish = choice(self.rand_fish)
@@ -47,14 +47,18 @@ class FishGame(FloatLayout):
                 self.score +=5
             if ~(self.hi>self.hi_game and self.hi< self.hi_game+50) and self.score > 0:
                 self.score -=1
-            if self.score == 500:
+            if self.score >= 500:
                 self.start = False
                 self.score = 0
+                self.hi = 0
+                self.hi_game = 0
         print(self.hi)
     def on_button_down(self):
         self.ispress = True
     def on_button_up(self):
         self.ispress =False
+    def on_click(self):
+        self.start = True
 class FishApp(App):
     def build(self):  
         return FishGame()

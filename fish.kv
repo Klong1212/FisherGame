@@ -4,16 +4,9 @@
         orientation: 'vertical'
         BoxLayout:
             orientation: 'horizontal'
-            Widget:
+            Image:
+                source: 'Wow-gif.webp'
                 size_hint: 1, 1
-                id: display
-                canvas.before:
-                    Color:
-                        rgba: 0, 0, 0, 1 
-                    Rectangle:
-                        size: display.size
-                        pos: display.pos
-
             Widget:
                 size_hint: 0.1, 1
                 id: rect_widget_points
@@ -48,6 +41,10 @@
         BoxLayout:
             size_hint: 1,0.5
             orientation: 'horizontal'
+            Button:
+                text: 'start'
+                size_hint: 
+                on_press: root.on_click()
             Button:
                 text: 'Fight'
                 on_press: root.on_button_down()
