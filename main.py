@@ -6,12 +6,6 @@ from random import randint,choice
 from kivy.uix.screenmanager import Screen,ScreenManager
 from kivy.uix.widget import Widget
 
-class BagScreen(Screen):
-    def __init__(self, **kwargs):
-        super(BagScreen, self).__init__(**kwargs)
-        self.back = False
-class Fish(Screen):
-    pass
 class MainScreen(Screen):
     hi = NumericProperty(0)
     hi_game = NumericProperty(0)
@@ -77,9 +71,7 @@ class MainScreen(Screen):
                 self.link = "animation2.gif"
                 self.video = False
                 
-    def update_button_image(self, button_id, speed_fish):
-        button = self.ids[button_id]
-        button.background_normal = speed_fish
+    
     def on_button_down(self):
         self.ispress = True
     def on_button_up(self):
@@ -100,6 +92,14 @@ class MainScreen(Screen):
             self.fish_link=choice(self.fish_legendary)
         self.start = True
         self.video=True
+
+class BagScreen(Screen):
+    def __init__(self, **kwargs):
+        super(Screen, self).__init__(**kwargs)
+        self.back = False
+    def update_button_image(self, button_id, speed_fish):
+        button = self.ids[button_id]
+        button.background_normal = speed_fish
 
 class FishApp(App):
     def build(self):

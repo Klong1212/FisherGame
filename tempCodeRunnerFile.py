@@ -1,2 +1,1 @@
-
-    link = StringProperty('animation1.gif')
+background_normal
