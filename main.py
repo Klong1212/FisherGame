@@ -16,7 +16,7 @@ class MainScreen(Screen):
     start = BooleanProperty(False)
     score = NumericProperty(0)
     fish_come = BooleanProperty(False)
-    link = StringProperty('fishpic/animation11.gif')
+    link = StringProperty()
     def __init__(self, **kwargs):
         super(MainScreen, self).__init__(**kwargs)
         Clock.schedule_interval(self.minigame, 1.0/60.0)
@@ -27,7 +27,6 @@ class MainScreen(Screen):
         self.bag = False
     def minigame(self, dt):
         if self.start:
-            
             self.rand=randint(1,10)
             self.rand_fight=randint(1,50)
             self.fish = choice(self.rand_fish)
@@ -63,9 +62,9 @@ class MainScreen(Screen):
                 self.score = 0
                 self.hi = 0
                 self.hi_game = 0
-                self.link = 'fishpic/animation11.gif'
+                self.link = 'animation11.gif'
             if self.video:
-                self.link = 'fishpic/animation12.gif'
+                self.link = 'animation12.gif'
                 
                 self.video = False
         
