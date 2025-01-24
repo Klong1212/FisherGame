@@ -21,10 +21,9 @@ class MainScreen(Screen):
         self.minigame_up = False
         self.rand_fish = [n for n in range(1,101)]
         self.video = False
-        self.bag = False
         self.fish_com=['fishpic/Sprite-0004.jpg','fishpic/Sprite-0005.jpg','fishpic/Sprite-0006.jpg','fishpic/Sprite-0007.jpg',
-                       'fishpic/Sprite-0008.jpg','fishpic/Sprite-0009.jpg','fishpic/Sprite-00010.jpg','fishpic/Sprite-00011.jpg',
-                       'fishpic/Sprite-00012.jpg','fishpic/Sprite-00013.jpg','fishpic/Sprite-0014.jpg','fishpic/Sprite-0015.jpg',
+                       'fishpic/Sprite-0008.jpg','fishpic/Sprite-0009.jpg','fishpic/Sprite-0010.jpg','fishpic/Sprite-00011.jpg',
+                       'fishpic/Sprite-0012.jpg','fishpic/Sprite-0013.jpg','fishpic/Sprite-0014.jpg','fishpic/Sprite-0015.jpg',
                        ]
         self.fish_rare=['fishpic/Sprite-0019.jpg','fishpic/Sprite-0020.jpg','fishpic/Sprite-0021.jpg','fishpic/Sprite-0022.jpg',
                         'fishpic/Sprite-0023.jpg','fishpic/Sprite-0024.jpg','fishpic/Sprite-0025.jpg']
@@ -66,12 +65,15 @@ class MainScreen(Screen):
                 self.score = 0
                 self.hi = 0
                 self.hi_game = 0
+                Clock.schedule_once(self.show_fish, 0)
+                self.go_to_bag_screen()
                 self.link = 'animation1.gif'
             if self.video:
                 self.link = "animation2.gif"
                 self.video = False
                 
-    
+    def show_fish(self, dt):
+        self.link = self.fish_link
     def on_button_down(self):
         self.ispress = True
     def on_button_up(self):
@@ -79,27 +81,63 @@ class MainScreen(Screen):
     def on_click(self):
         self.fish = choice(self.rand_fish)
         if self.fish in [i for i in range(1,51)]:
-            self.speed_fish = 4
+            self.speed_fish = 2
             self.fish_link=choice(self.fish_com)
         elif self.fish in [i for i in range(51,71)]:
-            self.speed_fish = 6
+            self.speed_fish = 4
             self.fish_link=choice(self.fish_rare)
         elif self.fish in [i for i in range(71,96)]:
-            self.speed_fish = 8
+            self.speed_fish = 6
             self.fish_link=choice(self.fish_epic)
         elif self.fish in [i for i in range(96,101)]:
-            self.speed_fish = 10
+            self.speed_fish = 8
             self.fish_link=choice(self.fish_legendary)
+        self.link = 'animation1.gif'
+        
         self.start = True
         self.video=True
-
+    def go_to_bag_screen(self):
+        app = App.get_running_app()
+        bag_screen = app.root.get_screen('bag_screen')
+        bag_screen.update_fish_image(self.fish_link)
 class BagScreen(Screen):
+    fish_image_1 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_2 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_3 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_4 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_5 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_6 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_7 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_8 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_9 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_10 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_11 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_12 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_13 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_14 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_15 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_16 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_17 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_18 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_19 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_20 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_21 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_22 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_23 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_24 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_25 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_26 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_27 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_28 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_29 = StringProperty("fishpic/sonsai.jpg")
+    fish_image_30 = StringProperty("fishpic/sonsai.jpg")
     def __init__(self, **kwargs):
-        super(Screen, self).__init__(**kwargs)
-        self.back = False
-    def update_button_image(self, button_id, speed_fish):
-        button = self.ids[button_id]
-        button.background_normal = speed_fish
+        super(BagScreen, self).__init__(**kwargs)
+
+    def update_fish_image(self, fish_links):
+        self.fish_image = fish_links
+        self.update_button_image()
+        
 
 class FishApp(App):
     def build(self):
