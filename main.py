@@ -22,14 +22,17 @@ class MainScreen(Screen):
         Clock.schedule_interval(self.minigame, 1.0/60.0)
         self.ispress = False
         self.minigame_up = False
-        self.rand_fish = [1,2,3,4,5,6,7]
+        self.rand_fish = [1,2,3,4,5,6,7,8,9,10]
         self.video = False
         self.bag = False
     def minigame(self, dt):
         if self.start:
+            
             self.rand=randint(1,10)
-            self.rand_fight=randint(1,100)
+            self.rand_fight=randint(1,50)
             self.fish = choice(self.rand_fish)
+            if self.fish in [1,2,3,4,5]:
+                self.fish = 5
             if self.hi > 0:
                 self.hi -= 5
             if self.ispress and self.hi < 480:
