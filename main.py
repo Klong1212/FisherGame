@@ -135,9 +135,67 @@ class BagScreen(Screen):
         super(BagScreen, self).__init__(**kwargs)
 
     def update_fish_image(self, fish_links):
-        self.fish_image = fish_links
-        self.update_button_image()
-        
+        if fish_links == "fishpic/Sprite-0004.jpg":
+            self.fish_image_1 = "fishpic/Sprite-0004.jpg"
+        elif fish_links == "fishpic/Sprite-0005.jpg":
+            self.fish_image_2 = "fishpic/Sprite-0005.jpg"
+        elif fish_links == "fishpic/Sprite-0006.jpg":
+            self.fish_image_3 = "fishpic/Sprite-0006.jpg"
+        elif fish_links == "fishpic/Sprite-0007.jpg":
+            self.fish_image_4 = "fishpic/Sprite-0007.jpg"
+        elif fish_links == "fishpic/Sprite-0008.jpg":
+            self.fish_image_5 = "fishpic/Sprite-0008.jpg"
+        elif fish_links == "fishpic/Sprite-0009.jpg":
+            self.fish_image_6 = "fishpic/Sprite-0009.jpg"
+        elif fish_links == "fishpic/Sprite-0010.jpg":
+            self.fish_image_7 = "fishpic/Sprite-0010.jpg"
+        elif fish_links == "fishpic/Sprite-00011.jpg":
+            self.fish_image_8 = "fishpic/Sprite-00011.jpg"
+        elif fish_links == "fishpic/Sprite-0012.jpg":
+            self.fish_image_9 = "fishpic/Sprite-0012.jpg"
+        elif fish_links == "fishpic/Sprite-0013.jpg":
+            self.fish_image_10 = "fishpic/Sprite-0013.jpg"
+        elif fish_links == "fishpic/Sprite-0014.jpg":
+            self.fish_image_11 = "fishpic/Sprite-0014.jpg"
+        elif fish_links == "fishpic/Sprite-0015.jpg":
+            self.fish_image_12 = "fishpic/Sprite-0015.jpg"
+        elif fish_links == "fishpic/Sprite-0016.jpg":
+            self.fish_image_13 = "fishpic/Sprite-0016.jpg"
+        elif fish_links == "fishpic/Sprite-0017.jpg":
+            self.fish_image_14 = "fishpic/Sprite-0017.jpg"
+        elif fish_links == "fishpic/Sprite-0018.jpg":
+            self.fish_image_15 = "fishpic/Sprite-0018.jpg"
+        elif fish_links == "fishpic/Sprite-0019.jpg":
+            self.fish_image_16 = "fishpic/Sprite-0019.jpg"
+        elif fish_links == "fishpic/Sprite-0020.jpg":
+            self.fish_image_17 = "fishpic/Sprite-0020.jpg"
+        elif fish_links == "fishpic/Sprite-0021.jpg":
+            self.fish_image_18 = "fishpic/Sprite-0021.jpg"
+        elif fish_links == "fishpic/Sprite-0022.jpg":
+            self.fish_image_19 = "fishpic/Sprite-0022.jpg"
+        elif fish_links == "fishpic/Sprite-0023.jpg":
+            self.fish_image_20 = "fishpic/Sprite-0023.jpg"
+        elif fish_links == "fishpic/Sprite-0024.jpg":
+            self.fish_image_21 = "fishpic/Sprite-0024.jpg"
+        elif fish_links == "fishpic/Sprite-0025.jpg":
+            self.fish_image_22 = "fishpic/Sprite-0025.jpg"
+        elif fish_links == "fishpic/Sprite-0026.jpg":
+            self.fish_image_23 = "fishpic/Sprite-0026.jpg"
+        elif fish_links == "fishpic/Sprite-0027.jpg":
+            self.fish_image_24 = "fishpic/Sprite-0027.jpg"
+        elif fish_links == "fishpic/Sprite-0028.jpg":
+            self.fish_image_25 = "fishpic/Sprite-0028.jpg"
+        elif fish_links == "fishpic/Sprite-0029.jpg":
+            self.fish_image_26 = "fishpic/Sprite-0029.jpg"
+        elif fish_links == "fishpic/Sprite-0030.jpg":
+            self.fish_image_27 = "fishpic/Sprite-0030.jpg"
+        elif fish_links == "fishpic/Sprite-0031.jpg":
+            self.fish_image_28 = "fishpic/Sprite-0031.jpg"
+        elif fish_links == "fishpic/Sprite-0032.jpg":
+            self.fish_image_29 = "fishpic/Sprite-0032.jpg"
+        elif fish_links == "fishpic/Sprite-0033.jpg":
+            self.fish_image_30 = "fishpic/Sprite-0033.jpg"
+    
 
 class FishApp(App):
     def build(self):
