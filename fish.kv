@@ -6,69 +6,104 @@
             size_hint: 0.1, 1
             text: 'back'
             on_release: app.root.current ="main_screen"
-        GridLayout:
-            cols: 5  
-            rows: 6  
-            Button:
-                text: '1'
-            Button:
-                text: '2'
-            Button:
-                text: '3'
-            Button:
-                text: '4'
-            Button:
-                text: '5'
-            Button:
-                text: '6'
-            Button:
-                text: '7'
-            Button:
-                text: '8'
-            Button:
-                text: '9'
-            Button:
-                text: '10'
-            Button:
-                text: '11'
-            Button:
-                text: '12'
-            Button:
-                text: '13'
-            Button:
-                text: '14'
-            Button:
-                text: '15'
-            Button:
-                text: '16'
-            Button:
-                text: '17'
-            Button:
-                text: '18'
-            Button:
-                text: '19'
-            Button:
-                text: '20'
-            Button:
-                text: '21'
-            Button:
-                text: '22'
-            Button:
-                text: '23'
-            Button:
-                text: '24'
-            Button:
-                text: '25'
-            Button:
-                text: '26'
-            Button:
-                text: '27'
-            Button:
-                text: '28'
-            Button:
-                text: '29'
-            Button:
-                text: '30'
+        BoxLayout:
+            orientation: 'vertical'
+            GridLayout:
+                cols: 5  
+                rows: 6  
+                Button:
+                    id: pic1
+                    background_normal: root.update_button_image(self, 'pic1', 'fishpic/Sprite-0004.jpg')
+                Button:
+                    id: pic2
+                    background_normal: root.update_button_image(self, 'pic2', 'fishpic/Sprite-0005.jpg')
+                Button:
+                    id: pic3
+                    background_normal: root.update_button_image(self, 'pic3', 'fishpic/Sprite-0006.jpg')
+                Button:
+                    id: pic4
+                    background_normal: root.update_button_image(self, 'pic4', 'fishpic/Sprite-0007.jpg')
+                Button:
+                    id: pic5
+                    background_normal: root.update_button_image(self, 'pic5', 'fishpic/Sprite-0008.jpg')
+                Button:
+                    id: pic6
+                    background_normal: root.update_button_image(self, 'pic6', 'fishpic/Sprite-0009.jpg')
+                Button:
+                    id: pic7
+                    background_normal: root.update_button_image(self, 'pic7', 'fishpic/Sprite-0010.jpg')
+                Button:
+                    id: pic8
+                    background_normal: root.update_button_image(self, 'pic8', 'fishpic/Sprite-0011.jpg')
+                Button:
+                    id: pic9
+                    background_normal: root.update_button_image(self, 'pic9', 'fishpic/Sprite-0012.jpg')
+                Button:
+                    id: pic10
+                    background_normal: root.update_button_image(self, 'pic10', 'fishpic/Sprite-0013.jpg')
+                Button:
+                    id: pic11
+                    background_normal: root.update_button_image(self, 'pic11', 'fishpic/Sprite-0014.jpg')
+                Button:
+                    id: pic12
+                    background_normal: root.update_button_image(self, 'pic12', 'fishpic/Sprite-0015.jpg')
+                Button:
+                    id: pic13
+                    background_normal: root.update_button_image(self, 'pic13', 'fishpic/Sprite-0016.jpg')
+                Button:
+                    id: pic14
+                    background_normal: root.update_button_image(self, 'pic14', 'fishpic/Sprite-0017.jpg')
+                Button:
+                    id: pic15
+                    background_normal: root.update_button_image(self, 'pic15', 'fishpic/Sprite-0018.jpg')
+                Button:
+                    id: pic16
+                    background_normal: root.update_button_image(self, 'pic16', 'fishpic/Sprite-0019.jpg')
+                Button:
+                    id: pic17
+                    background_normal: root.update_button_image(self, 'pic17', 'fishpic/Sprite-0020.jpg')
+                Button:
+                    id: pic18
+                    background_normal: root.update_button_image(self, 'pic18', 'fishpic/Sprite-0021.jpg')
+                Button:
+                    id: pic19
+                    background_normal: root.update_button_image(self, 'pic19', 'fishpic/Sprite-0022.jpg')
+                Button:
+                    id: pic20
+                    background_normal: root.update_button_image(self, 'pic20', 'fishpic/Sprite-0023.jpg')
+                Button:
+                    id: pic21
+                    background_normal: root.update_button_image(self, 'pic21', 'fishpic/Sprite-0024.jpg')
+                Button:
+                    id: pic22
+                    background_normal: root.update_button_image(self, 'pic22', 'fishpic/Sprite-0025.jpg')
+                Button:
+                    id: pic23
+                    background_normal: root.update_button_image(self, 'pic23', 'fishpic/Sprite-0026.jpg')
+                Button:
+                    id: pic24
+                    background_normal: root.update_button_image(self, 'pic24', 'fishpic/Sprite-0027.jpg')
+                Button:
+                    id: pic25
+                    background_normal: root.update_button_image(self, 'pic25', 'fishpic/Sprite-0028.jpg')
+                Button:
+                    id: pic26
+                    background_normal: root.update_button_image(self, 'pic26', 'fishpic/Sprite-0029.jpg')
+                Button:
+                    id: pic27
+                    background_normal: root.update_button_image(self, 'pic27', 'fishpic/Sprite-0030.jpg')
+                Button:
+                    id: pic28
+                    background_normal: root.update_button_image(self, 'pic28', 'fishpic/Sprite-0031.jpg')
+                Button:
+                    id: pic29
+                    background_normal: root.update_button_image(self, 'pic29', 'fishpic/Sprite-0032.jpg')
+                Button:
+                    id: pic30
+                    background_normal: root.update_button_image(self, 'pic30', 'fishpic/Sprite-0033.jpg')
+            Label:
+                id:text_info
+                text:root.info_text
 
 
         
