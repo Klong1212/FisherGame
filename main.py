@@ -131,70 +131,102 @@ class BagScreen(Screen):
     fish_image_28 = StringProperty("fishpic/sonsai.jpg")
     fish_image_29 = StringProperty("fishpic/sonsai.jpg")
     fish_image_30 = StringProperty("fishpic/sonsai.jpg")
+    text_input = StringProperty("None")
     def __init__(self, **kwargs):
         super(BagScreen, self).__init__(**kwargs)
 
     def update_fish_image(self, fish_links):
         if fish_links == "fishpic/Sprite-0004.jpg":
             self.fish_image_1 = "fishpic/Sprite-0004.jpg"
+            self.text_input = "Ice cream or mushroom, guess"
         elif fish_links == "fishpic/Sprite-0005.jpg":
             self.fish_image_2 = "fishpic/Sprite-0005.jpg"
+            self.text_input = "Santa's delivery car"
         elif fish_links == "fishpic/Sprite-0006.jpg":
             self.fish_image_3 = "fishpic/Sprite-0006.jpg"
+            self.text_input = "Smiling spider"
         elif fish_links == "fishpic/Sprite-0007.jpg":
             self.fish_image_4 = "fishpic/Sprite-0007.jpg"
+            self.text_input = "Nong Pun"
         elif fish_links == "fishpic/Sprite-0008.jpg":
             self.fish_image_5 = "fishpic/Sprite-0008.jpg"
+            self.text_input = "Poop"
         elif fish_links == "fishpic/Sprite-0009.jpg":
             self.fish_image_6 = "fishpic/Sprite-0009.jpg"
+            self.text_input = "Pacman"
         elif fish_links == "fishpic/Sprite-0010.jpg":
             self.fish_image_7 = "fishpic/Sprite-0010.jpg"
+            self.text_input = "Haunted tree"
         elif fish_links == "fishpic/Sprite-00011.jpg":
             self.fish_image_8 = "fishpic/Sprite-00011.jpg"
+            self.text_input = "Fishbone"
         elif fish_links == "fishpic/Sprite-0012.jpg":
             self.fish_image_9 = "fishpic/Sprite-0012.jpg"
+            self.text_input = "Six stars"
         elif fish_links == "fishpic/Sprite-0013.jpg":
             self.fish_image_10 = "fishpic/Sprite-0013.jpg"
+            self.text_input = "Five stars"
         elif fish_links == "fishpic/Sprite-0014.jpg":
             self.fish_image_11 = "fishpic/Sprite-0014.jpg"
+            self.text_input = "One star"
         elif fish_links == "fishpic/Sprite-0015.jpg":
             self.fish_image_12 = "fishpic/Sprite-0015.jpg"
+            self.text_input = "Three stars"
         elif fish_links == "fishpic/Sprite-0016.jpg":
             self.fish_image_13 = "fishpic/Sprite-0016.jpg"
+            self.text_input = "Two stars"
         elif fish_links == "fishpic/Sprite-0017.jpg":
             self.fish_image_14 = "fishpic/Sprite-0017.jpg"
+            self.text_input = "Four stars"
         elif fish_links == "fishpic/Sprite-0018.jpg":
             self.fish_image_15 = "fishpic/Sprite-0018.jpg"
+            self.text_input = "Dog boat"
         elif fish_links == "fishpic/Sprite-0019.jpg":
             self.fish_image_16 = "fishpic/Sprite-0019.jpg"
+            self.text_input = "Luffy's hat"
         elif fish_links == "fishpic/Sprite-0020.jpg":
             self.fish_image_17 = "fishpic/Sprite-0020.jpg"
+            self.text_input = "Seven stars"
         elif fish_links == "fishpic/Sprite-0021.jpg":
             self.fish_image_18 = "fishpic/Sprite-0021.jpg"
+            self.text_input = "Eight stars"
         elif fish_links == "fishpic/Sprite-0022.jpg":
             self.fish_image_19 = "fishpic/Sprite-0022.jpg"
+            self.text_input = "Real fish"
         elif fish_links == "fishpic/Sprite-0023.jpg":
             self.fish_image_20 = "fishpic/Sprite-0023.jpg"
+            self.text_input = "SCB easy"
         elif fish_links == "fishpic/Sprite-0024.jpg":
             self.fish_image_21 = "fishpic/Sprite-0024.jpg"
+            self.text_input = "Legendary tank"
         elif fish_links == "fishpic/Sprite-0025.jpg":
             self.fish_image_22 = "fishpic/Sprite-0025.jpg"
+            self.text_input = "Thai flag"
         elif fish_links == "fishpic/Sprite-0026.jpg":
             self.fish_image_23 = "fishpic/Sprite-0026.jpg"
+            self.text_input = "Heart star man"
         elif fish_links == "fishpic/Sprite-0027.jpg":
             self.fish_image_24 = "fishpic/Sprite-0027.jpg"
+            self.text_input = "Ordinary world"
         elif fish_links == "fishpic/Sprite-0028.jpg":
             self.fish_image_25 = "fishpic/Sprite-0028.jpg"
+            self.text_input = "Used paper"
         elif fish_links == "fishpic/Sprite-0029.jpg":
             self.fish_image_26 = "fishpic/Sprite-0029.jpg"
+            self.text_input = "Snake crawling to the waist"
         elif fish_links == "fishpic/Sprite-0030.jpg":
             self.fish_image_27 = "fishpic/Sprite-0030.jpg"
-        elif fish_links == "fishpic/Sprite-0031.jpg":
+            self.text_input = "Hi"
+        elif self.fish_image_11 == "fishpic/Sprite-0014.jpg" and self.fish_image_13 == "fishpic/Sprite-0016.jpg" and self.fish_image_12 == "fishpic/Sprite-0015.jpg" and self.fish_image_14== "fishpic/Sprite-0017.jpg" and self.fish_image_10 == "fishpic/Sprite-0013.jpg" and self.fish_image_9 == "fishpic/Sprite-0012.jpg" and self.fish_image_17 == "fishpic/Sprite-0020.jpg" and self.fish_image_18 == "fishpic/Sprite-0021.jpg":
             self.fish_image_28 = "fishpic/Sprite-0031.jpg"
+            self.text_input = "Evil from the dark web"
         elif fish_links == "fishpic/Sprite-0032.jpg":
             self.fish_image_29 = "fishpic/Sprite-0032.jpg"
+            self.text_input = "Badly designed bird"
         elif fish_links == "fishpic/Sprite-0033.jpg":
             self.fish_image_30 = "fishpic/Sprite-0033.jpg"
+            self.text_input = "Smiling ball"
+            
     
 
 class FishApp(App):
