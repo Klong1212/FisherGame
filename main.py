@@ -5,9 +5,10 @@ from kivy.clock import Clock
 from random import randint,choice
 from kivy.uix.screenmanager import Screen,ScreenManager
 from kivy.uix.widget import Widget
+
 class BagScreen(Screen):
     def __init__(self, **kwargs):
-        super(BagScreen, self).__init__(**kwargs)
+        super(Screen, self).__init__(**kwargs)
         self.back = False
 
 class MainScreen(Screen):
@@ -16,7 +17,7 @@ class MainScreen(Screen):
     start = BooleanProperty(False)
     score = NumericProperty(0)
     fish_come = BooleanProperty(False)
-    link = StringProperty()
+    link = StringProperty('animation1.gif')
     def __init__(self, **kwargs):
         super(MainScreen, self).__init__(**kwargs)
         Clock.schedule_interval(self.minigame, 1.0/60.0)
@@ -62,11 +63,11 @@ class MainScreen(Screen):
                 self.score = 0
                 self.hi = 0
                 self.hi_game = 0
-                self.link = 'animation11.gif'
+                self.link = 'fishpic/animation1.gif'
             if self.video:
-                self.link = 'animation12.gif'
-                
+                self.link = "animation2.gif"
                 self.video = False
+                
         
     def on_button_down(self):
         self.ispress = True
