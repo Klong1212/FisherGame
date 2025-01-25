@@ -1,23 +1,30 @@
 #:kivy 1.1
+
 <StartScreen>:
     FloatLayout:
         Image:
-            source: 'fishpic/Nature.gif'
+            source: 'nature.gif'
             allow_stretch: True
             keep_ratio: False
             size_hint: 1, 1
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         Button:
-            size_hint: 0.1, 0.1
+            size_hint: 0.2, 0.2
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             text: 'Play'
+            font_name: 'DAYDREAM.TTF' 
+            font_size: '20sp'
+            background_color: 0, 1, 0, 1
             on_release: app.root.current = "main_screen"
 <BagScreen>:
     BoxLayout:
         orientation: 'horizontal'
         Button:
-            size_hint: 0.1, 1
+            size_hint: 0.2, 1
             text: 'back'
+            background_color: 0, 0, 1, 1
+            font_name: 'DAYDREAM.TTF' 
+            font_size: '20sp'
             on_release: app.root.current ="main_screen"
         BoxLayout:
             orientation: 'vertical'
@@ -148,6 +155,8 @@
                 id:Text_add
                 size_hint: 1,0.1
                 text: root.text_input
+                font_name: 'DAYDREAM.TTF' 
+                font_size: '20sp'
 
         
 <MainScreen>:
@@ -157,10 +166,18 @@
             orientation: 'horizontal'
             Image:
                 source: root.link
+                allow_stretch: True
+                keep_ratio: False
+                size_hint: 1, 1
             Widget:
                 size_hint: 0.1, 1
                 id: rect_widget_points
                 canvas.before:
+                    Color:
+                        rgba: 1, 0.84, 0, 1  # Gold color
+                    Line:
+                        width: 2  # Thickness of the border
+                        rectangle: (self.x, self.y, self.width, self.height)
                     Color:
                         rgba: 0, 0, 0, 1 
                     Rectangle:
@@ -178,6 +195,11 @@
                 id: rect_widget_minigame
                 canvas.before:
                     Color:
+                        rgba: 1, 0.84, 0, 1  # Gold color
+                    Line:
+                        width: 2  # Thickness of the border
+                        rectangle: (self.x, self.y, self.width, self.height)
+                    Color:
                         rgba: 0, 1, 0, 1 
                     Rectangle:
                         size: rect_widget_minigame.width, 50
@@ -189,18 +211,26 @@
                         size: rect_widget_minigame.width, 10
                         pos: rect_widget_minigame.x , rect_widget_minigame.y+root.hi
         BoxLayout:
-            size_hint: 1,0.5
+            size_hint: 1,0.2
             orientation: 'horizontal'
             Button:
                 text: 'start'
-                size_hint: 
+                font_name: 'DAYDREAM.TTF' 
+                font_size: '20sp'
+                background_color: 0.55, 0.27, 0.07, 1
                 on_press: root.on_click()
             Button:
                 text: 'Fight'
+                font_name: 'DAYDREAM.TTF' 
+                font_size: '20sp'
+                background_color: 0.55, 0.27, 0.07, 1
                 on_press: root.on_button_down()
                 on_release: root.on_button_up()
             Button:
                 text: 'Bag'
+                font_name: 'DAYDREAM.TTF' 
+                font_size: '20sp'
+                background_color: 0, 0, 1, 1
                 size_hint: 0.2, 1
                 on_release: app.root.current ="bag_screen"
 ScreenManager:
@@ -211,4 +241,3 @@ ScreenManager:
         name: "main_screen"
     BagScreen:
         name: "bag_screen"
-    

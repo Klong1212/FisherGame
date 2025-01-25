@@ -4,12 +4,13 @@ from kivy.properties import NumericProperty,BooleanProperty,StringProperty
 from kivy.clock import Clock
 from random import randint,choice
 from kivy.uix.screenmanager import Screen,ScreenManager
-
-from kivy.core.audio import SoundLoader
+import pygame
 class StartScreen(Screen):
     def __init__(self, **kwargs):
         super(StartScreen, self).__init__(**kwargs)
+
 class MainScreen(Screen):
+    
     hi = NumericProperty(0)
     hi_game = NumericProperty(0)
     start = BooleanProperty(False)
@@ -33,28 +34,14 @@ class MainScreen(Screen):
         self.fish_epic=['fishpic/Sprite-0016.jpg','fishpic/Sprite-0017.jpg','fishpic/Sprite-0018.jpg','fishpic/Sprite-0026.jpg',
                         'fishpic/Sprite-0027.jpg','fishpic/Sprite-0028.jpg','fishpic/Sprite-0029.jpg','fishpic/Sprite-0030.jpg']
         self.fish_legendary=['fishpic/Sprite-0031.jpg','fishpic/Sprite-0032.jpg','fishpic/Sprite-0033.jpg']
-        self.sound_before=SoundLoader.load("pixel-song-21-72593.mp3")
-        self.sound_fight=SoundLoader.load('pixel-song-3-72687.mp3')
+        pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
+        self.sound_before = pygame.mixer.Sound("pixel-song-21-72593.mp3")
+        self.play_sound_before()
 
     def play_sound_before(self):
-        if self.sound_before :
-            self.sound_before.loop = True
-            if self.sound_before.state != 'play':
-                self.sound_before.play()
-
-    def stop_sound_before(self):
-        if self.sound_before:
-            self.sound_before.stop()
-
-    def play_sound_fight(self):
-        if self.sound_fight:
-            self.sound_fight.play()
-
-    def stop_sound_fight(self):
-        if self.sound_fight:
-            self.sound_fight.stop()
-        
-                
+        if not pygame.mixer.get_busy():
+            self.sound_before.set_volume(0.5)
+            self.sound_before.play(loops=-1)
     def minigame(self, dt):
         if self.start:
             self.rand=randint(1,10)
@@ -62,14 +49,15 @@ class MainScreen(Screen):
 
             if self.hi > 0:
                 self.hi -= 5
-            if self.ispress and self.hi < 480:
+            if self.ispress and self.hi < 620:
                 self.hi += 10
+                print(self.hi)
             if self.rand_fight==1:
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
             if self.hi_game<=0:
                 self.minigame_up = True
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
-            if self.hi_game>=480:
+            if self.hi_game>=620:
                 self.minigame_up = False
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
             
@@ -85,7 +73,7 @@ class MainScreen(Screen):
                 self.score +=5
             if not(self.hi>self.hi_game and self.hi< self.hi_game+50) and self.score > 0:
                 self.score -=1
-            if self.score >= 500:
+            if self.score >= 630:
                 self.start = False
                 self.score = 0
                 self.hi = 0
@@ -120,6 +108,7 @@ class MainScreen(Screen):
         self.link = 'animation1.gif'
         self.start = True
         self.video=True
+        
     def go_to_bag_screen(self):
         app = App.get_running_app()
         bag_screen = app.root.get_screen('bag_screen')
