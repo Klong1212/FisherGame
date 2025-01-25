@@ -1,11 +1,14 @@
 from kivy.app import App
-from kivy.uix.floatlayout import FloatLayout
+
 from kivy.properties import NumericProperty,BooleanProperty,StringProperty
 from kivy.clock import Clock
 from random import randint,choice
 from kivy.uix.screenmanager import Screen,ScreenManager
-from kivy.uix.widget import Widget
 
+from kivy.core.audio import SoundLoader
+class StartScreen(Screen):
+    def __init__(self, **kwargs):
+        super(StartScreen, self).__init__(**kwargs)
 class MainScreen(Screen):
     hi = NumericProperty(0)
     hi_game = NumericProperty(0)
@@ -30,6 +33,28 @@ class MainScreen(Screen):
         self.fish_epic=['fishpic/Sprite-0016.jpg','fishpic/Sprite-0017.jpg','fishpic/Sprite-0018.jpg','fishpic/Sprite-0026.jpg',
                         'fishpic/Sprite-0027.jpg','fishpic/Sprite-0028.jpg','fishpic/Sprite-0029.jpg','fishpic/Sprite-0030.jpg']
         self.fish_legendary=['fishpic/Sprite-0031.jpg','fishpic/Sprite-0032.jpg','fishpic/Sprite-0033.jpg']
+        self.sound_before=SoundLoader.load("pixel-song-21-72593.mp3")
+        self.sound_fight=SoundLoader.load('pixel-song-3-72687.mp3')
+
+    def play_sound_before(self):
+        if self.sound_before :
+            self.sound_before.loop = True
+            if self.sound_before.state != 'play':
+                self.sound_before.play()
+
+    def stop_sound_before(self):
+        if self.sound_before:
+            self.sound_before.stop()
+
+    def play_sound_fight(self):
+        if self.sound_fight:
+            self.sound_fight.play()
+
+    def stop_sound_fight(self):
+        if self.sound_fight:
+            self.sound_fight.stop()
+        
+                
     def minigame(self, dt):
         if self.start:
             self.rand=randint(1,10)
@@ -93,7 +118,6 @@ class MainScreen(Screen):
             self.speed_fish = 8
             self.fish_link=choice(self.fish_legendary)
         self.link = 'animation1.gif'
-        
         self.start = True
         self.video=True
     def go_to_bag_screen(self):
@@ -264,6 +288,7 @@ class BagScreen(Screen):
 class FishApp(App):
     def build(self):
         sm = ScreenManager()
+        sm.add_widget(StartScreen(name='start_screen'))
         sm.add_widget(MainScreen(name='main_screen'))
         sm.add_widget(BagScreen(name='bag_screen'))
         return sm

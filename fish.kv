@@ -1,4 +1,17 @@
 #:kivy 1.1
+<StartScreen>:
+    FloatLayout:
+        Image:
+            source: 'fishpic/Nature.gif'
+            allow_stretch: True
+            keep_ratio: False
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        Button:
+            size_hint: 0.1, 0.1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            text: 'Play'
+            on_release: app.root.current = "main_screen"
 <BagScreen>:
     BoxLayout:
         orientation: 'horizontal'
@@ -192,6 +205,8 @@
                 on_release: app.root.current ="bag_screen"
 ScreenManager:
     id: sm
+    StartScreen:
+        name: "start_screen"
     MainScreen:
         name: "main_screen"
     BagScreen:
