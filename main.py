@@ -48,14 +48,14 @@ class MainScreen(Screen): # หน้าจอเล่น
 
             if self.hi > 0: #ถ้าไม่ขยับและมากกว่า0ให้ตำแหน่งผู้เล่นลดลง
                 self.hi -= 5
-            if self.ispress and self.hi < 620: #ถ้ากดสู้อยู่แล้วตำแหน่งผู้เล่นน้อยกว่าจุดสูงสุดให้ตำแหน่งผู้เล่นขึ้น
+            if self.ispress and self.hi < self.height*0.82: #ถ้ากดสู้อยู่แล้วตำแหน่งผู้เล่นน้อยกว่าจุดสูงสุดให้ตำแหน่งผู้เล่นขึ้น
                 self.hi += 10
             if self.rand_fight==1: #ถ้าเป็น1หมายถึง มีโอกาศ1ใน550 ที่ปลาจะเปลี่ยนแปลงความเร็ว
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
             if self.hi_game<=0:#ถ้าตำแหน่งปลาอยู่จุดตำ่สุดให้เด้งขึ้น
                 self.minigame_up = True
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
-            if self.hi_game>=530:#ถ้าตำแหน่งปลาอยู่จุดสูงสุดให้เด้งลง
+            if self.hi_game>=self.height*0.82-90:#ถ้าตำแหน่งปลาอยู่จุดสูงสุดให้เด้งลง
                 self.minigame_up = False
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
             
@@ -71,7 +71,7 @@ class MainScreen(Screen): # หน้าจอเล่น
                 self.score +=5
             if not(self.hi>self.hi_game and self.hi< self.hi_game+100) and self.score > 0: # ถ้าไม่ได้อยู่ในตัวปลาคะแนนจะลดลง
                 self.score -=1
-            if self.score >= 630: #ถ้าคะแนนถึง630จะหยุดเล่นรีเซ็ตทุกอย่างและเอาภาพปลาที่สุ่มได้ขึ้นมา
+            if self.score >= self.height*0.82: #ถ้าคะแนนถึง630จะหยุดเล่นรีเซ็ตทุกอย่างและเอาภาพปลาที่สุ่มได้ขึ้นมา
                 self.start = False
                 self.score = 0
                 self.hi = 0
