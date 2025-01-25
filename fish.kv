@@ -2,13 +2,13 @@
 
 <StartScreen>:
     FloatLayout:
-        Image:
+        Image: #ภาพพื้นหลัง
             source: 'nature.gif'
             allow_stretch: True
             keep_ratio: False
             size_hint: 1, 1
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-        Button:
+        Button: #ปุ่มเข้าเกม
             size_hint: 0.2, 0.2
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
             text: 'Play'
@@ -19,7 +19,7 @@
 <BagScreen>:
     BoxLayout:
         orientation: 'horizontal'
-        Button:
+        Button:#ภาพพื้นหลังปุ่มกลับเข้าหน้า main
             size_hint: 0.2, 1
             text: 'back'
             background_color: 0, 0, 1, 1
@@ -28,7 +28,7 @@
             on_release: app.root.current ="main_screen"
         BoxLayout:
             orientation: 'vertical'
-            GridLayout:
+            GridLayout:#ภาพปลาเป็นช่องๆ
                 cols: 5  
                 rows: 6  
                 Button:
@@ -164,19 +164,19 @@
         orientation: 'vertical'
         BoxLayout:
             orientation: 'horizontal'
-            Image:
+            Image:#ภาพหน้าจอแสดงผล
                 source: root.link
                 allow_stretch: True
                 keep_ratio: False
                 size_hint: 1, 1
-            Widget:
+            Widget:# ช่องนับคะแนน
                 size_hint: 0.1, 1
                 id: rect_widget_points
                 canvas.before:
                     Color:
-                        rgba: 1, 0.84, 0, 1  # Gold color
+                        rgba: 1, 0.84, 0, 1  # กรอปสีทอง
                     Line:
-                        width: 2  # Thickness of the border
+                        width: 2 
                         rectangle: (self.x, self.y, self.width, self.height)
                     Color:
                         rgba: 0, 0, 0, 1 
@@ -190,19 +190,19 @@
                         size: rect_widget_points.width, root.score
                         pos: rect_widget_points.pos
 
-            Widget:
+            Widget:#หน้าจอแสดงผลการเล่น
                 size_hint: 0.1, 1
                 id: rect_widget_minigame
                 canvas.before:
                     Color:
-                        rgba: 1, 0.84, 0, 1  # Gold color
+                        rgba: 1, 0.84, 0, 1  # กรอปทอง
                     Line:
-                        width: 2  # Thickness of the border
+                        width: 2 
                         rectangle: (self.x, self.y, self.width, self.height)
                     Color:
                         rgba: 0, 1, 0, 1 
                     Rectangle:
-                        size: rect_widget_minigame.width, 50
+                        size: rect_widget_minigame.width, 100
                         pos: rect_widget_minigame.x , rect_widget_minigame.y+root.hi_game
                 canvas:
                     Color:
@@ -213,27 +213,27 @@
         BoxLayout:
             size_hint: 1,0.2
             orientation: 'horizontal'
-            Button:
+            Button: #ปุ่ม สตาทถ้ากดจะเรียกใช่ฟังชั่นกด
                 text: 'start'
                 font_name: 'DAYDREAM.TTF' 
                 font_size: '20sp'
                 background_color: 0.55, 0.27, 0.07, 1
                 on_press: root.on_click()
-            Button:
+            Button: #ปุ่มสู้ถ้ากดตำแหน่งเราจะขึ้นถ้าปล่อยจะลง
                 text: 'Fight'
                 font_name: 'DAYDREAM.TTF' 
                 font_size: '20sp'
                 background_color: 0.55, 0.27, 0.07, 1
                 on_press: root.on_button_down()
                 on_release: root.on_button_up()
-            Button:
+            Button: #ปุ่มBag ถ้ากดจะเข้าหน้าจอ Bag
                 text: 'Bag'
                 font_name: 'DAYDREAM.TTF' 
                 font_size: '20sp'
                 background_color: 0, 0, 1, 1
                 size_hint: 0.2, 1
                 on_release: app.root.current ="bag_screen"
-ScreenManager:
+ScreenManager: #ตัวควบคุมหน้าจอ
     id: sm
     StartScreen:
         name: "start_screen"

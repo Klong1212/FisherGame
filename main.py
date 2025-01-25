@@ -1,97 +1,95 @@
 from kivy.app import App
 
-from kivy.properties import NumericProperty,BooleanProperty,StringProperty
+from kivy.properties import NumericProperty,BooleanProperty,StringProperty 
 from kivy.clock import Clock
 from random import randint,choice
 from kivy.uix.screenmanager import Screen,ScreenManager
 import pygame
-class StartScreen(Screen):
+class StartScreen(Screen): #หน้าจอเริ่มต้น
     def __init__(self, **kwargs):
         super(StartScreen, self).__init__(**kwargs)
 
-class MainScreen(Screen):
+class MainScreen(Screen): # หน้าจอเล่น
     
-    hi = NumericProperty(0)
-    hi_game = NumericProperty(0)
-    start = BooleanProperty(False)
-    score = NumericProperty(0)
-    fish_come = BooleanProperty(False)
-    link = StringProperty('animation1.gif')
-    fish_link= StringProperty()
+    hi = NumericProperty(0) # ตัวเก็บค่าความสูงของผู้เล่น
+    hi_game = NumericProperty(0) # ตัวเก็บค่าความสูงบล็อกปลา
+    start = BooleanProperty(False) # เก็บค่าความจริง ของเกมว่าเริ่มหรือยัง
+    score = NumericProperty(0) # เก็บค่าคะแนน
+    link = StringProperty('animation1.gif') # เก็บค่าลิ้ง อนิเมชั่น
+    fish_link= StringProperty() #เก็บลิ้งปลาที่สุ่มมได้
     def __init__(self, **kwargs):
         super(MainScreen, self).__init__(**kwargs)
-        Clock.schedule_interval(self.minigame, 1.0/60.0)
-        self.ispress = False
-        self.minigame_up = False
-        self.rand_fish = [n for n in range(1,101)]
-        self.video = False
-        self.fish_com=['fishpic/Sprite-0004.jpg','fishpic/Sprite-0005.jpg','fishpic/Sprite-0006.jpg','fishpic/Sprite-0007.jpg',
+        Clock.schedule_interval(self.minigame, 1.0/60.0) #เรียกใช้ minigame ทุกๆ 1/60 วินาที
+        self.ispress = False #เก็บค่าว่ากดปุ่มสู้อยู่ไหม ถ้ากดให้เป็น fail
+        self.minigame_up = False #ให้ค่า บล็อกปลา ถ้า false ปลาจะลง ถ้า True จะขึ้น
+        self.rand_fish = [n for n in range(1,101)] # สุ่มปลาจาก100ตัว
+        self.video = False #เก็บค่าเปลี่ยนวิดีโอ
+        self.fish_com=['fishpic/Sprite-0004.jpg','fishpic/Sprite-0005.jpg','fishpic/Sprite-0006.jpg','fishpic/Sprite-0007.jpg', # link common fish
                        'fishpic/Sprite-0008.jpg','fishpic/Sprite-0009.jpg','fishpic/Sprite-0010.jpg','fishpic/Sprite-00011.jpg',
                        'fishpic/Sprite-0012.jpg','fishpic/Sprite-0013.jpg','fishpic/Sprite-0014.jpg','fishpic/Sprite-0015.jpg',
                        ]
-        self.fish_rare=['fishpic/Sprite-0019.jpg','fishpic/Sprite-0020.jpg','fishpic/Sprite-0021.jpg','fishpic/Sprite-0022.jpg',
+        self.fish_rare=['fishpic/Sprite-0019.jpg','fishpic/Sprite-0020.jpg','fishpic/Sprite-0021.jpg','fishpic/Sprite-0022.jpg',# link rare fish
                         'fishpic/Sprite-0023.jpg','fishpic/Sprite-0024.jpg','fishpic/Sprite-0025.jpg']
-        self.fish_epic=['fishpic/Sprite-0016.jpg','fishpic/Sprite-0017.jpg','fishpic/Sprite-0018.jpg','fishpic/Sprite-0026.jpg',
+        self.fish_epic=['fishpic/Sprite-0016.jpg','fishpic/Sprite-0017.jpg','fishpic/Sprite-0018.jpg','fishpic/Sprite-0026.jpg',# link epic fish
                         'fishpic/Sprite-0027.jpg','fishpic/Sprite-0028.jpg','fishpic/Sprite-0029.jpg','fishpic/Sprite-0030.jpg']
-        self.fish_legendary=['fishpic/Sprite-0031.jpg','fishpic/Sprite-0032.jpg','fishpic/Sprite-0033.jpg']
-        pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
-        self.sound_before = pygame.mixer.Sound("pixel-song-21-72593.mp3")
-        self.play_sound_before()
+        self.fish_legendary=['fishpic/Sprite-0031.jpg','fishpic/Sprite-0032.jpg','fishpic/Sprite-0033.jpg']# link legendary fish
+        pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)#ตัวเล่นเพลง
+        self.sound_before = pygame.mixer.Sound("pixel-song-21-72593.mp3")# เลือกเพลง
+        self.play_sound_before()#ใช้ฟังชั่นเล่นเพลง
 
-    def play_sound_before(self):
+    def play_sound_before(self):#ฟังชั่นเล่นเพลง
         if not pygame.mixer.get_busy():
-            self.sound_before.set_volume(0.5)
-            self.sound_before.play(loops=-1)
-    def minigame(self, dt):
-        if self.start:
-            self.rand=randint(1,10)
-            self.rand_fight=randint(1,50)
+            self.sound_before.set_volume(0.5)#ปรับเสียงเพลงดังครึ่งเดียว
+            self.sound_before.play(loops=-1)#ลูป
+    def minigame(self, dt):#ฟังชั่นเกม
+        if self.start: #จะเริ่มเกมถ้ากดปุ่มสตาท
+            self.rand=randint(1,20) #สุ่มเลข1-10
+            self.rand_fight=randint(1,50)# สุ่มเลข1-50
 
-            if self.hi > 0:
+            if self.hi > 0: #ถ้าไม่ขยับและมากกว่า0ให้ตำแหน่งผู้เล่นลดลง
                 self.hi -= 5
-            if self.ispress and self.hi < 620:
+            if self.ispress and self.hi < 620: #ถ้ากดสู้อยู่แล้วตำแหน่งผู้เล่นน้อยกว่าจุดสูงสุดให้ตำแหน่งผู้เล่นขึ้น
                 self.hi += 10
-                print(self.hi)
-            if self.rand_fight==1:
+            if self.rand_fight==1: #ถ้าเป็น1หมายถึง มีโอกาศ1ใน550 ที่ปลาจะเปลี่ยนแปลงความเร็ว
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
-            if self.hi_game<=0:
+            if self.hi_game<=0:#ถ้าตำแหน่งปลาอยู่จุดตำ่สุดให้เด้งขึ้น
                 self.minigame_up = True
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
-            if self.hi_game>=620:
+            if self.hi_game>=530:#ถ้าตำแหน่งปลาอยู่จุดสูงสุดให้เด้งลง
                 self.minigame_up = False
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
             
-            if self.hi>self.hi_game and self.hi< self.hi_game+50 and self.rand==1:
+            if self.hi>self.hi_game and self.hi< self.hi_game+100 and self.rand==1:# ถ้าอยู่ในช่องปลามีโอกาศ1ใน10 ที่ปลาจะเด้งกลับและเปลี่ยนความเร็ว
                 self.minigame_up=not(self.minigame_up)
                 self.speed=randint(self.speed_fish//2,self.speed_fish)
         
-            if self.minigame_up:
+            if self.minigame_up:#ถ้าเป็นจริงปลาจะขึ้นด้วยความเร็วเท่ากับที่สุ่ม
                 self.hi_game += self.speed
-            if self.minigame_up==False:
+            if self.minigame_up==False:#ถ้าเป็นเท็จปลาจะลงด้วยความเร็วเท่ากับที่สุ่ม
                 self.hi_game -= self.speed
-            if self.hi>self.hi_game and self.hi< self.hi_game+50:
+            if self.hi>self.hi_game and self.hi< self.hi_game+100: #ถ้าอยู่ในตัวปลาจะได้คะแนน
                 self.score +=5
-            if not(self.hi>self.hi_game and self.hi< self.hi_game+50) and self.score > 0:
+            if not(self.hi>self.hi_game and self.hi< self.hi_game+100) and self.score > 0: # ถ้าไม่ได้อยู่ในตัวปลาคะแนนจะลดลง
                 self.score -=1
-            if self.score >= 630:
+            if self.score >= 630: #ถ้าคะแนนถึง630จะหยุดเล่นรีเซ็ตทุกอย่างและเอาภาพปลาที่สุ่มได้ขึ้นมา
                 self.start = False
                 self.score = 0
                 self.hi = 0
                 self.hi_game = 0
                 Clock.schedule_once(self.show_fish, 0)
-                self.go_to_bag_screen()
+                self.go_to_bag_screen() #เรียกใช้ฟังชั่นเก็บปลาใส่กระเป๋า
                 self.link = 'animation1.gif'
-            if self.video:
+            if self.video: #ถ้าตัวแปรวิดีโอเป็นจริงจะเปลี่ยนอนิเมชั่น ซึ่งจะเป็นจริงก็ต่อเมื่อกดปุ่ม start
                 self.link = "animation2.gif"
                 self.video = False
                 
-    def show_fish(self, dt):
+    def show_fish(self, dt):#ฟังชั่นโชว์ปลา
         self.link = self.fish_link
-    def on_button_down(self):
+    def on_button_down(self):#ฟังชั่นกด
         self.ispress = True
-    def on_button_up(self):
+    def on_button_up(self):#ฟังชั่นปล่อย
         self.ispress =False
-    def on_click(self):
+    def on_click(self):#ฟังชั่นปุ่ม start เริ่มด้วยสุ่มปลาจากนั้นดูว่าปลาอยู่ในช่วงไหนจากนั้นสุ่มลิ้งปลาจากช่วงนั้น
         self.fish = choice(self.rand_fish)
         if self.fish in [i for i in range(1,51)]:
             self.speed_fish = 2
@@ -109,12 +107,12 @@ class MainScreen(Screen):
         self.start = True
         self.video=True
         
-    def go_to_bag_screen(self):
+    def go_to_bag_screen(self):#ฟังชันเก็บใส่กระเปล๋าโดยจะส่งself.link เข้าไปใน ฟังชั่น ของง class bagscreen
         app = App.get_running_app()
         bag_screen = app.root.get_screen('bag_screen')
         bag_screen.update_fish_image(self.fish_link)
-class BagScreen(Screen):
-    fish_image_1 = StringProperty("fishpic/sonsai.jpg")
+class BagScreen(Screen): #ฟังชั่นกระเป่า
+    fish_image_1 = StringProperty("fishpic/sonsai.jpg")#เก็บภาพทั้งหมดเอาไว้ 30ภาพ
     fish_image_2 = StringProperty("fishpic/sonsai.jpg")
     fish_image_3 = StringProperty("fishpic/sonsai.jpg")
     fish_image_4 = StringProperty("fishpic/sonsai.jpg")
@@ -144,11 +142,11 @@ class BagScreen(Screen):
     fish_image_28 = StringProperty("fishpic/sonsai.jpg")
     fish_image_29 = StringProperty("fishpic/sonsai.jpg")
     fish_image_30 = StringProperty("fishpic/sonsai.jpg")
-    text_input = StringProperty("None")
+    text_input = StringProperty("None")#เก็บภาพข้อความเอาไว้ (การอธิบายภาพ)
     def __init__(self, **kwargs):
         super(BagScreen, self).__init__(**kwargs)
 
-    def update_fish_image(self, fish_links):
+    def update_fish_image(self, fish_links):#ฟังชั่นเปลี่ยนช่องนั้นๆให้เป็นภาพนั้นๆถ้าภาพของปลาที่สุ่มได้ตรงกัน
         if fish_links == "fishpic/Sprite-0004.jpg":
             self.fish_image_1 = "fishpic/Sprite-0004.jpg"
         elif fish_links == "fishpic/Sprite-0005.jpg":
@@ -203,14 +201,17 @@ class BagScreen(Screen):
             self.fish_image_26 = "fishpic/Sprite-0029.jpg"
         elif fish_links == "fishpic/Sprite-0030.jpg":
             self.fish_image_27 = "fishpic/Sprite-0030.jpg"
-        elif self.fish_image_11 == "fishpic/Sprite-0014.jpg" and self.fish_image_13 == "fishpic/Sprite-0016.jpg" and self.fish_image_12 == "fishpic/Sprite-0015.jpg" and self.fish_image_14 == "fishpic/Sprite-0017.jpg" and self.fish_image_10 == "fishpic/Sprite-0013.jpg" and self.fish_image_9 == "fishpic/Sprite-0012.jpg" and self.fish_image_17 == "fishpic/Sprite-0020.jpg" and self.fish_image_18 == "fishpic/Sprite-0021.jpg":
+        elif (self.fish_image_11 == "fishpic/Sprite-0014.jpg" and self.fish_image_13 == "fishpic/Sprite-0016.jpg" 
+              and self.fish_image_12 == "fishpic/Sprite-0015.jpg" and self.fish_image_14 == "fishpic/Sprite-0017.jpg" 
+              and self.fish_image_10 == "fishpic/Sprite-0013.jpg" and self.fish_image_9 == "fishpic/Sprite-0012.jpg" 
+              and self.fish_image_17 == "fishpic/Sprite-0020.jpg" and self.fish_image_18 == "fishpic/Sprite-0021.jpg"): #ถ้าภาพทั้งหมดเป็นจริงแล้วปลาตัวนี้จะโผล่
             self.fish_image_28 = "fishpic/Sprite-0031.jpg"
         elif fish_links == "fishpic/Sprite-0032.jpg":
             self.fish_image_29 = "fishpic/Sprite-0032.jpg"
         elif fish_links == "fishpic/Sprite-0033.jpg":
             self.fish_image_30 = "fishpic/Sprite-0033.jpg"
 
-    def text_inputs(self, number_id):
+    def text_inputs(self, number_id):#ตัวเปลี่ยนคำอธิบายปลา
         if number_id == "pic1" and self.fish_image_1 == "fishpic/Sprite-0004.jpg":
             self.text_input = "Ice cream or mushroom, guess"
         elif number_id == "pic2" and self.fish_image_2 == "fishpic/Sprite-0005.jpg":
@@ -274,7 +275,7 @@ class BagScreen(Screen):
          
     
 
-class FishApp(App):
+class FishApp(App):#class ของแอปใช่ screenmanager เพื่อเปลี่ยนหน้า
     def build(self):
         sm = ScreenManager()
         sm.add_widget(StartScreen(name='start_screen'))
