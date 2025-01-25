@@ -4,7 +4,7 @@
 โปรแกรมประกอบไปด้วย 3 หน้าจอ 1. startscreen หน้าจอเริ่ม 2. mainscreen หน้าจอเล่น 3. bagscreen ช่องของ 
 
 โดย3หน้าจอจะลิ้งกันโดยใช้ screenmanager เป็นตัวเชื่อมกัน
-##startscreen
+##startscreen##
 ![Screenshot 2025-01-25 182446](https://github.com/user-attachments/assets/d4f25b07-f078-49a6-8a67-d86ac8f18bf6)
   โดยจะเริ่มที่ startscreen ถ้ากดปุ่ม start จะเข้าสู่หน้าmain
 ###mainscreen
