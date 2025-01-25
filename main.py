@@ -32,7 +32,7 @@ class MainScreen(Screen): # หน้าจอเล่น
                         'fishpic/Sprite-0023.jpg','fishpic/Sprite-0024.jpg','fishpic/Sprite-0025.jpg']
         self.fish_epic=['fishpic/Sprite-0016.jpg','fishpic/Sprite-0017.jpg','fishpic/Sprite-0018.jpg','fishpic/Sprite-0026.jpg',# link epic fish
                         'fishpic/Sprite-0027.jpg','fishpic/Sprite-0028.jpg','fishpic/Sprite-0029.jpg','fishpic/Sprite-0030.jpg']
-        self.fish_legendary=['fishpic/Sprite-0031.jpg','fishpic/Sprite-0032.jpg','fishpic/Sprite-0033.jpg']# link legendary fish
+        self.fish_legendary=['fishpic/Sprite-0032.jpg','fishpic/Sprite-0033.jpg']# link legendary fish
         pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)#ตัวเล่นเพลง
         self.sound_before = pygame.mixer.Sound("pixel-song-21-72593.mp3")# เลือกเพลง
         self.play_sound_before()#ใช้ฟังชั่นเล่นเพลง
